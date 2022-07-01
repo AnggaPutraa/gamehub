@@ -12,7 +12,9 @@ class GamesListPage extends StatelessWidget {
         children: [
           BlocBuilder<GamesBloc, GamesState>(
             builder: (context, state) => state.maybeMap(
-              initialState: (_) => CircularProgressIndicator(),
+              initialState: (_) => const Center(
+                child: CircularProgressIndicator(),
+              ),
               loadingState: (_) => const Center(
                 child:  CircularProgressIndicator(),
               ),

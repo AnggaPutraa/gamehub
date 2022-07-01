@@ -13,10 +13,9 @@ class GamesBloc extends Bloc<GamesEvent, GamesState> {
   final GamesRepository _gameRepository;
   GamesBloc(this._gameRepository) : super(const GamesState.initialState()) {
     on<LoadedGamesEvent>((event, emit) async {
+      emit(const GamesState.loadingState());
       final response = await _gameRepository.getGames();
-      emit(
-        GamesState.loadedState(gameList: response)
-      );
+      emit(GamesState.loadedState(gameList: response));
     });
   }
 }
