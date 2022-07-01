@@ -1,4 +1,4 @@
 
 class EndPoints {
-  static const gamePowerPath = 'https://www.gamerpower.com/api/giveaways';
+  static const gamerPowerGiveawaysPath = 'https://www.gamerpower.com/api/giveaways';
 }

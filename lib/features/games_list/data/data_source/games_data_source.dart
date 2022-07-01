@@ -8,7 +8,7 @@ import '../model/games.dart';
 @injectable
 class GamesDataSource {
   final Dio _dio = Dio();
-  final String _path = EndPoints.gamePowerPath;
+  final String _path = EndPoints.gamerPowerGiveawaysPath;
 
   Future<Games> fetchGames() async {
     try {
