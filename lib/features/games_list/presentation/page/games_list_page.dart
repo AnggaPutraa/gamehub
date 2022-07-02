@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../widget/custom_sliver_progress_indicator.dart';
+import '../widget/game_list_sliver_app_bar.dart';
 import 'package:gamehub/features/games_list/presentation/bloc/games_bloc.dart';
 import 'package:gamehub/features/games_list/presentation/widget/game_card.dart';
 
@@ -9,20 +11,22 @@ class GamesListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
+      body: CustomScrollView(
+        slivers: [
+          const GameListSliverAppBar(),
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 20,
+            ),
+          ),
           BlocBuilder<GamesBloc, GamesState>(
             builder: (context, state) => state.maybeMap(
-              initialState: (_) => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              loadingState: (_) => const Center(
-                child:  CircularProgressIndicator(),
-              ),
-              loadedState: (state) => Expanded(
-                child: ListView.builder(
-                  itemCount: state.gameList.length,
-                  itemBuilder: (context, index) => GameCard(
+              initialState: (_) => const CustomSliverProgressIndicator(),
+              loadingState: (_) => const CustomSliverProgressIndicator(),
+              loadedState: (state) => SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  childCount: state.gameList.length,
+                  (context, index) => GameCard(
                     game: state.gameList[index]
                   )
                 ),
@@ -34,7 +38,6 @@ class GamesListPage extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: Colors.grey[300],
     );
   }
 }

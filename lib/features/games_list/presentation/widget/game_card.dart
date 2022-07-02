@@ -18,6 +18,7 @@ class GameCard extends StatelessWidget {
     ),
     child: NeumorphismBox(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
@@ -31,7 +32,33 @@ class GameCard extends StatelessWidget {
               ),
             ),
           ),
-          
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 4,),
+              Text(
+                '${game.title}',
+                maxLines: 2,
+                overflow: TextOverflow.clip,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(height: 4,),
+              Text('Status: ${game.status}'),
+              const SizedBox(height: 4,),
+              Text(
+                '${game.description}',
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  color: Colors.grey.shade600
+                ),
+              ),
+            ],
+          )
         ],
       )
     ),
