@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gamehub/features/games_list/presentation/bloc/games_bloc.dart';
+import 'package:gamehub/features/games_list/presentation/widget/game_card.dart';
 
 class GamesListPage extends StatelessWidget {
   const GamesListPage({Key? key}) : super(key: key);
@@ -18,7 +19,14 @@ class GamesListPage extends StatelessWidget {
               loadingState: (_) => const Center(
                 child:  CircularProgressIndicator(),
               ),
-              loadedState: (state) => Text('${state.gameList[1].description}'),
+              loadedState: (state) => Expanded(
+                child: ListView.builder(
+                  itemCount: state.gameList.length,
+                  itemBuilder: (context, index) => GameCard(
+                    game: state.gameList[index]
+                  )
+                ),
+              ),
               orElse: () => const Center(
                 child:  Text('Ops! Something went wrong!'),
               )
@@ -26,6 +34,7 @@ class GamesListPage extends StatelessWidget {
           )
         ],
       ),
+      backgroundColor: Colors.grey[300],
     );
   }
 }
