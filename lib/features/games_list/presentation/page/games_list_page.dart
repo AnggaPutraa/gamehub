@@ -11,32 +11,34 @@ class GamesListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          const GameListSliverAppBar(),
-          const SliverToBoxAdapter(
-            child: SizedBox(
-              height: 20,
-            ),
-          ),
-          BlocBuilder<GamesBloc, GamesState>(
-            builder: (context, state) => state.maybeMap(
-              initialState: (_) => const CustomSliverProgressIndicator(),
-              loadingState: (_) => const CustomSliverProgressIndicator(),
-              loadedState: (state) => SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: state.gameList.length,
-                  (context, index) => GameCard(
-                    game: state.gameList[index]
-                  )
-                ),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            const GameListSliverAppBar(),
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 20,
               ),
-              orElse: () => const Center(
-                child:  Text('Ops! Something went wrong!'),
-              )
             ),
-          )
-        ],
+            BlocBuilder<GamesBloc, GamesState>(
+              builder: (context, state) => state.maybeMap(
+                initialState: (_) => const CustomSliverProgressIndicator(),
+                loadingState: (_) => const CustomSliverProgressIndicator(),
+                loadedState: (state) => SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    childCount: state.gameList.length,
+                    (context, index) => GameCard(
+                      game: state.gameList[index]
+                    )
+                  ),
+                ),
+                orElse: () => const Center(
+                  child:  Text('Ops! Something went wrong!'),
+                )
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
