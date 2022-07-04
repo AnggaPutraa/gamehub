@@ -20,18 +20,21 @@ mixin _$GamesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialGamesEvent,
     required TResult Function() loadedGamesEvent,
+    required TResult Function(String query) searchGamesEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialGamesEvent,
     TResult Function()? loadedGamesEvent,
+    TResult Function(String query)? searchGamesEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialGamesEvent,
     TResult Function()? loadedGamesEvent,
+    TResult Function(String query)? searchGamesEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$GamesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialGamesEvent value) initialGamesEvent,
     required TResult Function(LoadedGamesEvent value) loadedGamesEvent,
+    required TResult Function(SearchGameEvent value) searchGamesEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialGamesEvent value)? initialGamesEvent,
     TResult Function(LoadedGamesEvent value)? loadedGamesEvent,
+    TResult Function(SearchGameEvent value)? searchGamesEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialGamesEvent value)? initialGamesEvent,
     TResult Function(LoadedGamesEvent value)? loadedGamesEvent,
+    TResult Function(SearchGameEvent value)? searchGamesEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +121,7 @@ class _$InitialGamesEvent implements InitialGamesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialGamesEvent,
     required TResult Function() loadedGamesEvent,
+    required TResult Function(String query) searchGamesEvent,
   }) {
     return initialGamesEvent();
   }
@@ -124,6 +131,7 @@ class _$InitialGamesEvent implements InitialGamesEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialGamesEvent,
     TResult Function()? loadedGamesEvent,
+    TResult Function(String query)? searchGamesEvent,
   }) {
     return initialGamesEvent?.call();
   }
@@ -133,6 +141,7 @@ class _$InitialGamesEvent implements InitialGamesEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialGamesEvent,
     TResult Function()? loadedGamesEvent,
+    TResult Function(String query)? searchGamesEvent,
     required TResult orElse(),
   }) {
     if (initialGamesEvent != null) {
@@ -146,6 +155,7 @@ class _$InitialGamesEvent implements InitialGamesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialGamesEvent value) initialGamesEvent,
     required TResult Function(LoadedGamesEvent value) loadedGamesEvent,
+    required TResult Function(SearchGameEvent value) searchGamesEvent,
   }) {
     return initialGamesEvent(this);
   }
@@ -155,6 +165,7 @@ class _$InitialGamesEvent implements InitialGamesEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialGamesEvent value)? initialGamesEvent,
     TResult Function(LoadedGamesEvent value)? loadedGamesEvent,
+    TResult Function(SearchGameEvent value)? searchGamesEvent,
   }) {
     return initialGamesEvent?.call(this);
   }
@@ -164,6 +175,7 @@ class _$InitialGamesEvent implements InitialGamesEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialGamesEvent value)? initialGamesEvent,
     TResult Function(LoadedGamesEvent value)? loadedGamesEvent,
+    TResult Function(SearchGameEvent value)? searchGamesEvent,
     required TResult orElse(),
   }) {
     if (initialGamesEvent != null) {
@@ -220,6 +232,7 @@ class _$LoadedGamesEvent implements LoadedGamesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialGamesEvent,
     required TResult Function() loadedGamesEvent,
+    required TResult Function(String query) searchGamesEvent,
   }) {
     return loadedGamesEvent();
   }
@@ -229,6 +242,7 @@ class _$LoadedGamesEvent implements LoadedGamesEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialGamesEvent,
     TResult Function()? loadedGamesEvent,
+    TResult Function(String query)? searchGamesEvent,
   }) {
     return loadedGamesEvent?.call();
   }
@@ -238,6 +252,7 @@ class _$LoadedGamesEvent implements LoadedGamesEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialGamesEvent,
     TResult Function()? loadedGamesEvent,
+    TResult Function(String query)? searchGamesEvent,
     required TResult orElse(),
   }) {
     if (loadedGamesEvent != null) {
@@ -251,6 +266,7 @@ class _$LoadedGamesEvent implements LoadedGamesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialGamesEvent value) initialGamesEvent,
     required TResult Function(LoadedGamesEvent value) loadedGamesEvent,
+    required TResult Function(SearchGameEvent value) searchGamesEvent,
   }) {
     return loadedGamesEvent(this);
   }
@@ -260,6 +276,7 @@ class _$LoadedGamesEvent implements LoadedGamesEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialGamesEvent value)? initialGamesEvent,
     TResult Function(LoadedGamesEvent value)? loadedGamesEvent,
+    TResult Function(SearchGameEvent value)? searchGamesEvent,
   }) {
     return loadedGamesEvent?.call(this);
   }
@@ -269,6 +286,7 @@ class _$LoadedGamesEvent implements LoadedGamesEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialGamesEvent value)? initialGamesEvent,
     TResult Function(LoadedGamesEvent value)? loadedGamesEvent,
+    TResult Function(SearchGameEvent value)? searchGamesEvent,
     required TResult orElse(),
   }) {
     if (loadedGamesEvent != null) {
@@ -280,6 +298,147 @@ class _$LoadedGamesEvent implements LoadedGamesEvent {
 
 abstract class LoadedGamesEvent implements GamesEvent {
   const factory LoadedGamesEvent() = _$LoadedGamesEvent;
+}
+
+/// @nodoc
+abstract class _$$SearchGameEventCopyWith<$Res> {
+  factory _$$SearchGameEventCopyWith(
+          _$SearchGameEvent value, $Res Function(_$SearchGameEvent) then) =
+      __$$SearchGameEventCopyWithImpl<$Res>;
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchGameEventCopyWithImpl<$Res>
+    extends _$GamesEventCopyWithImpl<$Res>
+    implements _$$SearchGameEventCopyWith<$Res> {
+  __$$SearchGameEventCopyWithImpl(
+      _$SearchGameEvent _value, $Res Function(_$SearchGameEvent) _then)
+      : super(_value, (v) => _then(v as _$SearchGameEvent));
+
+  @override
+  _$SearchGameEvent get _value => super._value as _$SearchGameEvent;
+
+  @override
+  $Res call({
+    Object? query = freezed,
+  }) {
+    return _then(_$SearchGameEvent(
+      query: query == freezed
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchGameEvent implements SearchGameEvent {
+  const _$SearchGameEvent({required this.query});
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'GamesEvent.searchGamesEvent(query: $query)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchGameEvent &&
+            const DeepCollectionEquality().equals(other.query, query));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(query));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$SearchGameEventCopyWith<_$SearchGameEvent> get copyWith =>
+      __$$SearchGameEventCopyWithImpl<_$SearchGameEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialGamesEvent,
+    required TResult Function() loadedGamesEvent,
+    required TResult Function(String query) searchGamesEvent,
+  }) {
+    return searchGamesEvent(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialGamesEvent,
+    TResult Function()? loadedGamesEvent,
+    TResult Function(String query)? searchGamesEvent,
+  }) {
+    return searchGamesEvent?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialGamesEvent,
+    TResult Function()? loadedGamesEvent,
+    TResult Function(String query)? searchGamesEvent,
+    required TResult orElse(),
+  }) {
+    if (searchGamesEvent != null) {
+      return searchGamesEvent(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialGamesEvent value) initialGamesEvent,
+    required TResult Function(LoadedGamesEvent value) loadedGamesEvent,
+    required TResult Function(SearchGameEvent value) searchGamesEvent,
+  }) {
+    return searchGamesEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialGamesEvent value)? initialGamesEvent,
+    TResult Function(LoadedGamesEvent value)? loadedGamesEvent,
+    TResult Function(SearchGameEvent value)? searchGamesEvent,
+  }) {
+    return searchGamesEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialGamesEvent value)? initialGamesEvent,
+    TResult Function(LoadedGamesEvent value)? loadedGamesEvent,
+    TResult Function(SearchGameEvent value)? searchGamesEvent,
+    required TResult orElse(),
+  }) {
+    if (searchGamesEvent != null) {
+      return searchGamesEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchGameEvent implements GamesEvent {
+  const factory SearchGameEvent({required final String query}) =
+      _$SearchGameEvent;
+
+  String get query => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$SearchGameEventCopyWith<_$SearchGameEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

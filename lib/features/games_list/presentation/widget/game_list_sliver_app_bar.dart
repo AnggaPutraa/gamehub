@@ -9,7 +9,7 @@ class GameListSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: Colors.white,
-      expandedHeight: MediaQuery.of(context).size.height * 0.2,
+      expandedHeight: MediaQuery.of(context).size.height * 0.175,
       flexibleSpace: FlexibleSpaceBar(
         title: const Text(
           'G A M E H U B',
@@ -31,7 +31,7 @@ class GameListSliverAppBar extends StatelessWidget {
       ),
       floating: false,
       pinned: true,
-      elevation: 2,
+      elevation: 0,
     );
   }
 }

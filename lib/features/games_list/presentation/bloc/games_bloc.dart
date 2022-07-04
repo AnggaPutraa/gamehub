@@ -17,5 +17,15 @@ class GamesBloc extends Bloc<GamesEvent, GamesState> {
       final response = await _gameRepository.getGames();
       emit(GamesState.loadedState(gameList: response));
     });
+    on<SearchGameEvent>((event, emit) async {
+      emit(const GamesState.loadingState());
+      final response = await _gameRepository.getGames();
+      final gameResult = response.where((element) {
+        final lowerTitle = element.title.toString().toLowerCase();
+        final lowerQuery = event.query.toLowerCase();
+        return lowerTitle.contains(lowerQuery);
+      }).toList();
+      emit(GamesState.loadedState(gameList: gameResult));
+    });
   }
 }
