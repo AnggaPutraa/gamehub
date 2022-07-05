@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamehub/features/game_detail/presentation/page/game_detail_page.dart';
 import 'package:gamehub/features/games_list/data/model/game.dart';
 import 'package:gamehub/features/games_list/presentation/widget/neumorphism_box.dart';
 
@@ -16,51 +17,60 @@ class GameCard extends StatelessWidget {
       right: 20,
       bottom: 20
     ),
-    child: NeumorphismBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.2,
-              color: Colors.grey.shade300,
-              child: Image.network(
-                '${game.image}',
-                fit: BoxFit.cover,
+    child: GestureDetector(
+      onTap: () => Navigator.push(
+        context, MaterialPageRoute(
+          builder: (context) => GameDetailPage(
+            game: game
+          ),
+        )
+      ),
+      child: NeumorphismBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.2,
+                color: Colors.grey.shade300,
+                child: Image.network(
+                  '${game.image}',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 4,),
-              Text(
-                '${game.title}',
-                maxLines: 2,
-                overflow: TextOverflow.clip,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 4,),
+                Text(
+                  '${game.title}',
+                  maxLines: 2,
+                  overflow: TextOverflow.clip,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 4,),
-              Text('Status: ${game.status}'),
-              const SizedBox(height: 4,),
-              Text(
-                '${game.description}',
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  color: Colors.grey.shade600
+                const SizedBox(height: 4,),
+                Text('Status: ${game.status}'),
+                const SizedBox(height: 4,),
+                Text(
+                  '${game.description}',
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: Colors.grey.shade600
+                  ),
                 ),
-              ),
-            ],
-          )
-        ],
-      )
+              ],
+            )
+          ],
+        )
+      ),
     ),
   );
 }

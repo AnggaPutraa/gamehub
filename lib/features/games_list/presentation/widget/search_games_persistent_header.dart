@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import '../bloc/games_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gamehub/features/games_list/presentation/widget/custom_persistent_header.dart';
-
-import '../bloc/games_bloc.dart';
-
 
 class SearchGamesPersistentHeader extends StatelessWidget {
   const SearchGamesPersistentHeader({
@@ -15,8 +13,6 @@ class SearchGamesPersistentHeader extends StatelessWidget {
     return SliverPersistentHeader(
       delegate: SliverSearchBarDelegate(
         child: Container(
-          width: 20,
-          height: 20,
           color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.symmetric(

@@ -11,6 +11,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
     create: (context) => get<GamesBloc>()..add(const GamesEvent.loadedGamesEvent()),
     child: const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: GamesListPage(),
     ),
   );

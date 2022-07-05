@@ -11,21 +11,24 @@ part 'games_bloc.freezed.dart';
 @injectable
 class GamesBloc extends Bloc<GamesEvent, GamesState> {
   final GamesRepository _gameRepository;
+  late List<Game> _currentResponse  = <Game>[];
   GamesBloc(this._gameRepository) : super(const GamesState.initialState()) {
     on<LoadedGamesEvent>((event, emit) async {
       emit(const GamesState.loadingState());
       final response = await _gameRepository.getGames();
+      _currentResponse = response;
       emit(GamesState.loadedState(gameList: response));
     });
     on<SearchGameEvent>((event, emit) async {
-      emit(const GamesState.loadingState());
-      final response = await _gameRepository.getGames();
-      final gameResult = response.where((element) {
-        final lowerTitle = element.title.toString().toLowerCase();
-        final lowerQuery = event.query.toLowerCase();
-        return lowerTitle.contains(lowerQuery);
-      }).toList();
-      emit(GamesState.loadedState(gameList: gameResult));
+      if (state is $GamesLoadedState) {
+        emit(const GamesState.loadingState());
+        final searchResult = _currentResponse.where((game) {
+          final lowerTitle = game.title.toString().toLowerCase();
+          final lowerQuery = event.query.toLowerCase();
+          return lowerTitle.contains(lowerQuery);
+        }).toList();
+        emit(GamesState.loadedState(gameList: searchResult));
+      }
     });
   }
 }
