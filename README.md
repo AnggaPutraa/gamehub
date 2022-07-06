@@ -26,7 +26,7 @@ Go to the project directory
   flutter clean
   flutter pub get
   flutter pub run build_runner build --delete-conflicting-outputs
-  flutter build apk -t lib/main.dart
+  flutter run lib/main.dart
 ```
 
 
