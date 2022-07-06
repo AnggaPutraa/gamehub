@@ -1,16 +1,36 @@
-# gamehub
 
-A new Flutter project.
+# GAMEHUB
 
-## Getting Started
+A mobile app made using Flutter that provide an information about games giveaway. 
+This application uses the GamerPower API as the content provided in it. Data retrieval 
+from the API is assisted by using the Dio package with the GET method, which then will be 
+displayed with the help of bloc as business logic in the application.
 
-This project is a starting point for a Flutter application.
+## App Preview
 
-A few resources to get you started if this is your first Flutter project:
+![App Screenshot](assets/images/gamehub_preview.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/AnggaPutraa/gamehub.git
+```
+
+Go to the project directory
+
+```bash
+  cd gamehub
+  flutter clean
+  flutter pub get
+  flutter pub run build_runner build --delete-conflicting-outputs
+  flutter build apk -t lib/main.dart
+```
+
+
+## Documentation
+
+More information about the GamerPower API can be found [here](https://www.gamerpower.com/api-read).
+
