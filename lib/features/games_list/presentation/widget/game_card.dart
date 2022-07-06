@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gamehub/features/game_detail/presentation/page/game_detail_page.dart';
 import 'package:gamehub/features/games_list/data/model/game.dart';
-import 'package:gamehub/features/games_list/presentation/widget/neumorphism_box.dart';
+import 'package:gamehub/core/bases/widget/neumorphism_box.dart';
 
 class GameCard extends StatelessWidget {
   final Game game;
@@ -29,15 +29,18 @@ class GameCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.2,
-                color: Colors.grey.shade300,
-                child: Image.network(
-                  '${game.image}',
-                  fit: BoxFit.cover,
+            Hero(
+              tag: '${game.id}',
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  color: Colors.grey.shade300,
+                  child: Image.network(
+                    '${game.image}',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

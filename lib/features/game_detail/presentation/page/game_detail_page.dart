@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../../games_list/data/model/game.dart';
+import '../widget/back_button.dart';
+import '../widget/claim_button.dart';
 
 class GameDetailPage extends StatelessWidget {
   final Game game;
@@ -13,13 +16,16 @@ class GameDetailPage extends StatelessWidget {
     body: SafeArea(
       child: Stack(
         children: [
-          Container(
-            color: Colors.grey,
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.3,
-            child: Image.network(
-              '${game.image}',
-              fit: BoxFit.cover
+          Hero(
+            tag: '${game.id}',
+            child: Container(
+              color: Colors.grey,
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Image.network(
+                '${game.image}',
+                fit: BoxFit.cover
+              ),
             ),
           ),
           Container(
@@ -43,89 +49,114 @@ class GameDetailPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: Text(
-                            '${game.title}',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold
+                    SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                            child: Text(
+                              '${game.title}',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
-                        ),
-                        const Divider(
-                          thickness: 1.0,
-                          color: Colors.black26,
-                        ),
-                        const Text(
-                          'Description',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                          const Divider(
+                            thickness: 1.0,
+                            color: Colors.black26,
                           ),
-                        ),
-                        Text(
-                          '${game.description}',
-                          textAlign: TextAlign.justify,
-                        ),
-                        const SizedBox(height: 8,),
-                        const Text(
-                          'How to get it?',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                          const SizedBox(height: 8,),
+                          const Text(
+                            'Description',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '${game.instructions}',
-                          textAlign: TextAlign.justify,
-                        ),
-                        const SizedBox(height: 8,),
-                      ],
+                          Text(
+                            '${game.description}',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              color: Colors.grey.shade700
+                            ),
+                          ),
+                          const SizedBox(height: 12,),
+                          const Text(
+                            'Worth of',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${game.worth}' == 'N/A'
+                            ? 'Not applicable.'
+                            : '${game.worth}',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              color: Colors.grey.shade700
+                            ),
+                          ),
+                          const SizedBox(height: 12,),
+                          const Text(
+                            'Available on',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${game.platforms}',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              color: Colors.grey.shade700
+                            ),
+                          ),
+                          const SizedBox(height: 12,),
+                          const Text(
+                            'Ends in',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${game.endDate}' == 'N/A'
+                            ? 'Not applicable.'
+                            : DateFormat.yMMMMEEEEd().format(DateTime.parse('${game.endDate}')),
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              color: Colors.grey.shade700
+                            ),
+                          ),
+                          const SizedBox(height: 12,),
+                          const Text(
+                            'How to get it?',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${game.instructions}',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              color: Colors.grey.shade700
+                            ),
+                          ),
+                          const SizedBox(height: 8,),
+                        ],
+                      ),
                     ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: (){}, 
-                            child: const Text('Claim')
-                          ),
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: (){}, 
-                            child: const Text('Get')
-                          ),
-                        ),
-                      ],
-                    )
+                    const ClaimButton()
                   ],
                 ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ClipOval(
-              child: Material(
-                color: Colors.white, // Button color
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Icon(Icons.arrow_back),
-                  ),
-                ),
-              ),
-            ),
-          )  
+          const CustomBackButton()
         ],
       ),
     )
