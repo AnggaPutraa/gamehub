@@ -42,6 +42,7 @@ class GamesListPage extends StatelessWidget {
           ],
         ),
       ),
+      resizeToAvoidBottomInset: false
     );
   }
 }

@@ -159,6 +159,7 @@ class GameDetailPage extends StatelessWidget {
           const CustomBackButton()
         ],
       ),
-    )
+    ),
+    resizeToAvoidBottomInset: false
   );
 }
