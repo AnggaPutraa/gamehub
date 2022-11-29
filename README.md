@@ -1,4 +1,4 @@
-# 📱 Todo App 📱
+# 📱 G A M E H U B 📱
 
 ## 🎁 Get Latest Game Giveaway 🎁
 A mobile app made using Flutter that provide an information about games giveaway. 
